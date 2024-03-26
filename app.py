@@ -3,7 +3,7 @@ import math
 from streamlit_gsheets import GSheetsConnection
 
 MAX_ROWS = 20
-MAX_COLS = 3
+MAX_COLS = 5
 
 with st.form("form"):
     num_rows = st.slider("How many rows?", 1, MAX_ROWS)
@@ -23,8 +23,5 @@ if submitted:
         nrows=num_rows,
     )
 
-    df = df.dropna(thresh=1)
-
     st.write(f"First {num_rows} rows and {num_cols} columns from {conn.client._spreadsheet}")
-    # Print results.
     st.dataframe(df, hide_index=True)
